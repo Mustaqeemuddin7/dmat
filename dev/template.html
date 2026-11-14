@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>dMAT Core Module Practice</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<aside class="side">
+  <div class="brand">
+    <div class="brandmark">dM</div>
+    <div>
+      <div class="brandname">dMAT Practice</div>
+      <div class="brandsub">Core Module</div>
+    </div>
+  </div>
+  <nav class="snav" id="tabs"></nav>
+  <div class="sidesep"></div>
+  <div class="sidefoot">
+    <button id="profileChip" class="pchip" style="display:none" title="Switch profile"></button>
+    <div class="sidechips">
+      <div id="cloudStatus" class="cloudchip" style="display:none"></div>
+      <div id="saveStatus" class="savechip">Storage: starting…</div>
+    </div>
+  </div>
+</aside>
+<div class="mainwrap">
+  <main>
+    <section class="view" id="view-dashboard"></section>
+    <section class="view" id="view-group"></section>
+    <section class="view" id="view-notes"></section>
+    <section class="view" id="view-class"></section>
+    <section class="view" id="view-exam"></section>
+    <section class="view" id="view-adaptive"></section>
+    <section class="view" id="view-analytics"></section>
+    <section class="view" id="view-settings"></section>
+  </main>
+  <footer class="footer">
+    Shortcuts: <span class="kbd">A</span>–<span class="kbd">E</span> answer (letter choices) · <span class="kbd">Enter</span> submit / next · <span class="kbd">M</span> mark for review (exam).
+    Progress is stored in this browser on this device (IndexedDB) — it does not sync automatically; use Settings → Export for backup and transfer.
+  </footer>
+</div>
+<div id="modal-root"></div>
+
+<script src="js/bank.js"></script>
+<script src="js/core.js"></script>
+<script src="js/math.js"></script>
+<script src="js/figures.js"></script>
+<script src="js/cloud.js"></script>
+<script src="js/deepnotes.js"></script>
+<script src="js/notes-content.js"></script>
+<script src="js/study-notes.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

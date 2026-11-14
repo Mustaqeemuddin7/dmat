@@ -1,0 +1,18 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>probe-pending</title></head><body>
+<div id="out">pending</div>
+<script>
+(async () => {
+  const out = [];
+  try {
+    const req = indexedDB.open('probe-db', 1);
+    req.onupgradeneeded = ev => { if (!ev.target.result.objectStoreNames.contains('kv')) ev.target.result.createObjectStore('kv'); };
+    await new Promise((res, rej) => { req.onsuccess = res; req.onerror = () => rej(req.error); setTimeout(() => rej(new Error('open timeout')), 8000); });
+    const db = req.result;
+    await new Promise((res, rej) => { const r = db.transaction('kv', 'readwrite').put({ v: 42 }, 't'); r.onsuccess = res; r.onerror = () => rej(r.error); });
+    const got = await new Promise((res) => { const r = db.transaction('kv', 'readonly').get('t'); r.onsuccess = () => res(r.result); r.onerror = () => res(null); });
+    out.push('IDB roundtrip: ' + (got && got.v === 42 ? 'OK' : 'FAILED got=' + JSON.stringify(got)));
+  } catch (e) { out.push('IDB error: ' + e.message); }
+  document.getElementById('out').textContent = out.join(' | ');
+  document.title = 'probe-done';
+})();
+</script></body></html>
